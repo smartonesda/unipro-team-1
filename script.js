@@ -111,7 +111,7 @@ const setupTabSwitching = () => {
     const sections = document.querySelectorAll(".spa-section");
     const quickBtns = document.querySelectorAll(".quick-nav"); // Tombol di Hero
 
-    const showSection = (targetId) => {
+        const showSection = (targetId) => {
         sections.forEach(sec => {
             if (sec.id === targetId) {
                 sec.classList.remove("hidden");
@@ -135,6 +135,10 @@ const setupTabSwitching = () => {
             }
         });
     };
+
+    // Expose untuk fitur lain (antrean, triage)
+    window.showSection = showSection;
+
 
     // Event Listeners Navbar
     navLinks.forEach(link => {
@@ -248,6 +252,70 @@ function startBreathing() {
 }
 
 // =============================
+// 7. SMART TRIAGE LOGIC
+// =============================
+function analyzeSymptoms() {
+    const physicalEl = document.getElementById("physicalSymptom");
+    const mentalEl = document.getElementById("mentalSymptom");
+    const resultBox = document.getElementById("recommendationResult");
+
+    if (!physicalEl || !mentalEl || !resultBox) return;
+
+    const physical = physicalEl.value;
+    const mental = mentalEl.value;
+
+    // Jika belum memilih keduanya, jangan tampilkan apapun
+    if (!physical || !mental) {
+        resultBox.classList.remove("hidden");
+        resultBox.innerHTML = `
+            <div class="p-3 rounded-xl border border-amber-200 bg-amber-50 text-xs text-amber-800">
+                Silakan pilih <strong>keluhan fisik</strong> dan <strong>kondisi pikiran</strong> terlebih dahulu.
+            </div>
+        `;
+        return;
+    }
+
+    let title = "Konsultasi Screening Umum";
+    let desc =
+        "Tim front doctor kami akan melakukan pemeriksaan awal untuk memetakan hubungan antara keluhan fisik dan beban mental Anda.";
+
+    if (physical === "maag" && mental === "stres") {
+        title = "Paket Gastric-Calm (Internis + Mindfulness)";
+        desc =
+            "Keluhan lambung yang berkaitan dengan stres sering kali membutuhkan kolaborasi dokter penyakit dalam dan sesi mindfulness singkat untuk menurunkan respons cemas tubuh.";
+    } else if (physical === "gigi" && mental === "cemas") {
+        title = "Paket Dental-Relief (Dokter Gigi TMJ + Terapi Napas)";
+        desc =
+            "Bruxism atau gigi menggeretak biasanya muncul saat cemas. Kombinasi evaluasi sendi rahang (TMJ) dan latihan napas terstruktur membantu merilekskan otot rahang.";
+    }
+
+    resultBox.classList.remove("hidden");
+    resultBox.innerHTML = `
+        <div class="p-3 rounded-xl border border-sage-200 bg-sage-50 text-sm">
+            <p class="text-[11px] font-semibold text-sage-600 uppercase tracking-wide mb-1">Rekomendasi Awal</p>
+            <p class="font-semibold text-sage-900 mb-1">${title}</p>
+            <p class="text-xs text-gray-500 mb-2">${desc}</p>
+            <button
+                type="button"
+                id="priorityQueueBtn"
+                class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-sage-600 text-white text-xs font-semibold hover:bg-sage-700 transition"
+            >
+                <i class="fa-solid fa-bell"></i>
+                Ambil Antrean Prioritas
+            </button>
+        </div>
+    `;
+
+    // Tombol antrean prioritas → reuse logika antrean utama
+    const priorityBtn = document.getElementById("priorityQueueBtn");
+    const queueBtn = document.getElementById("takeQueueBtn");
+    if (priorityBtn && queueBtn) {
+        priorityBtn.addEventListener("click", () => queueBtn.click());
+    }
+}
+
+
+// =============================
 // INIT
 // =============================
 document.addEventListener("DOMContentLoaded", () => {
@@ -255,23 +323,42 @@ document.addEventListener("DOMContentLoaded", () => {
     renderServices();
     setupTabSwitching();
     setupCostEstimator();
-    
+
     // Setup Queue Button
     const queueBtn = document.getElementById("takeQueueBtn");
-    if(queueBtn) {
+    if (queueBtn) {
         queueBtn.addEventListener("click", () => {
             const num = document.getElementById("queueNumberCard");
             const headNum = document.getElementById("queueNumberHeader");
             const status = document.getElementById("queueStatusCard");
             const headStatus = document.getElementById("queueStatusHeader");
-            
+            const terapiTitle = document.getElementById("terapiTitle");
+
+            // Nomor antrean (sementara fixed A-005)
             num.textContent = "A-005";
             headNum.textContent = "A-005";
             status.textContent = "Menunggu Dipanggil";
             headStatus.textContent = "Antrean Aktif";
-            
+
             num.classList.add("queue-pulse");
             setTimeout(() => num.classList.remove("queue-pulse"), 600);
+
+            // Pindah otomatis ke tab Terapi + mulai terapi napas
+            if (window.showSection) {
+                window.showSection("terapi");
+            }
+            startBreathing();
+
+            // Update judul terapi sesuai requirement
+            if (terapiTitle) {
+                terapiTitle.textContent = `Menunggu Antrean ${num.textContent}... Silakan Rileks.`;
+            }
         });
+    }
+
+    // Setup Smart Triage Button
+    const analyzeBtn = document.getElementById("analyzeBtn");
+    if (analyzeBtn) {
+        analyzeBtn.addEventListener("click", analyzeSymptoms);
     }
 });

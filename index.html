@@ -124,61 +124,166 @@
 
     <main class="max-w-6xl mx-auto px-4 pt-8 pb-24 sm:pb-10">
       
-      <section class="mb-8 grid md:grid-cols-[1.3fr,1fr] gap-6 items-center">
-        <div class="space-y-4">
-          <div class="inline-flex items-center gap-2 text-[11px] px-3 py-1 rounded-full bg-sage-100 text-sage-700 border border-sage-200 font-medium">
-            <span class="w-2 h-2 rounded-full bg-sage-500 animate-pulse"></span>
-            Diagnosis Ganda: Fisik & Mental
-          </div>
-          <h1 class="text-3xl md:text-5xl font-bold leading-tight text-sage-900">
-              Bukan Sekadar Obat.<br>
-              Kami Sembuhkan <span class="text-sage-600 italic">Akar Masalahnya.</span>
-          </h1>
-          <p class="text-sm md:text-base text-gray-600 max-w-xl leading-relaxed">
-              Sakit kepala berulang? Maag kronis? Rahang kaku?
-              Tahukah Anda, <strong>80% penyakit fisik</strong> masyarakat urban bermula dari stres yang tidak terdeteksi?
-              Nova Holistic Hub menyatukan medis dan mindfulness.
-          </p>
-
-          <div class="flex flex-wrap gap-3 pt-2">
-            <button class="quick-nav inline-flex items-center gap-2 px-6 py-3 rounded-full bg-sage-800 text-white text-sm font-semibold shadow-lg hover:bg-sage-900 hover:scale-[1.02] transition" data-target="htm">
-              <i class="fa-solid fa-calculator"></i> Estimasi Biaya
-            </button>
-            <button class="quick-nav inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white border border-sage-200 text-sage-700 text-sm hover:bg-sage-50 transition" data-target="terapi">
-              <i class="fa-solid fa-wind"></i> Coba Terapi
-            </button>
-          </div>
-        </div>
-
-        <div class="hidden md:block">
-          <div class="glass-card p-6 rounded-3xl ml-auto max-w-sm bg-white/80">
-            <div class="flex justify-between items-center mb-4">
-              <div class="text-xs font-semibold text-sage-500 uppercase tracking-wider">Self Check-in</div>
-              <div class="w-2 h-2 rounded-full bg-emerald-400"></div>
-            </div>
-            <div class="text-center py-4">
-              <p class="text-xs text-gray-500 mb-1">Nomor Antrean Anda</p>
-              <p id="queueNumberCard" class="text-4xl font-bold text-sage-800 tracking-widest my-2">--</p>
-              <p id="queueStatusCard" class="text-xs font-medium text-sage-600 bg-sage-100 inline-block px-3 py-1 rounded-full">Menunggu Check-in</p>
-            </div>
-            <button id="takeQueueBtn" class="w-full mt-4 py-3 rounded-xl bg-gradient-to-r from-sage-600 to-sage-500 text-white text-sm font-semibold shadow-md hover:shadow-lg transition">
-              Ambil Antrean Sekarang
-            </button>
-          </div>
-        </div>
-      </section>
+      <!-- HERO SECTION DIPINDAHKAN MASUK BERANDA, JADI DIHAPUS DARI SINI -->
 
       <section id="content-container" class="glass-card bg-white/60 rounded-3xl p-6 md:p-8 shadow-xl min-h-[400px] border border-white">
         
+        <!-- ===================== BERANDA ===================== -->
         <div id="beranda" class="spa-section transition-all duration-300 ease-out opacity-100 translate-y-0">
-            <div class="text-center max-w-2xl mx-auto mb-10">
-                <h2 class="text-2xl font-bold text-sage-900 mb-2">Dokter yang Bertugas Hari Ini</h2>
-                <p class="text-sm text-gray-500">Tim ahli kami siap mendengarkan keluhan fisik dan mental Anda.</p>
-            </div>
-            <div id="doctorList" class="grid sm:grid-cols-2 gap-4">
-                </div>
+
+          <!-- HERO SECTION SEKARANG DI DALAM #beranda -->
+          <!-- HERO BERANDA -->
+<section class="mb-8 grid md:grid-cols-[1.3fr,1fr] gap-6 items-center">
+  <!-- KOLOM KIRI: Badge + Headline + Deskripsi -->
+  <div class="space-y-4">
+    <div
+      class="inline-flex items-center gap-2 text-[11px] px-3 py-1 rounded-full bg-sage-100 text-sage-700 border border-sage-200 font-medium"
+    >
+      <span class="w-2 h-2 rounded-full bg-sage-500 animate-pulse"></span>
+      Diagnosis Ganda: Fisik & Mental
+    </div>
+
+    <h1 class="text-3xl md:text-5xl font-bold leading-tight text-sage-900">
+      Bukan Sekadar Obat.<br />
+      Kami Sembuhkan
+      <span class="text-sage-600 italic">Akar Masalahnya.</span>
+    </h1>
+
+    <p class="text-sm md:text-base text-gray-600 max-w-xl leading-relaxed">
+      Sakit kepala berulang? Maag kronis? Rahang kaku? Tahukah Anda,
+      <strong>80% penyakit fisik</strong> masyarakat urban bermula dari stres
+      yang tidak terdeteksi? Nova Holistic Hub menyatukan pendekatan medis dan
+      mindfulness, agar tubuh dan pikiran pulih secara bersamaan.
+    </p>
+  </div>
+
+  <!-- KOLOM KANAN: STACK Self Check-in + Smart Triage -->
+  <div class="flex flex-col gap-6">
+    <!-- CARD SELF CHECK-IN -->
+    <div
+      class="glass-card p-6 rounded-3xl w-full bg-white/80 border border-sage-200 shadow-md"
+    >
+      <div class="flex justify-between items-center mb-4">
+        <div class="text-xs font-semibold text-sage-500 uppercase tracking-wider">
+          Self Check-in
+        </div>
+        <div class="w-2 h-2 rounded-full bg-emerald-400"></div>
+      </div>
+
+      <div class="text-center py-4">
+        <p class="text-xs text-gray-500 mb-1">Nomor Antrean Anda</p>
+        <p
+          id="queueNumberCard"
+          class="text-4xl font-bold text-sage-800 tracking-widest my-2"
+        >
+          --
+        </p>
+        <p
+          id="queueStatusCard"
+          class="text-xs font-medium text-sage-600 bg-sage-100 inline-block px-3 py-1 rounded-full"
+        >
+          Menunggu Check-in
+        </p>
+      </div>
+
+      <button
+        id="takeQueueBtn"
+        class="w-full mt-4 py-3 rounded-xl bg-gradient-to-r from-sage-600 to-sage-500 text-white text-sm font-semibold shadow-md hover:shadow-lg transition"
+      >
+        Ambil Antrean Sekarang
+      </button>
+    </div>
+
+    <!-- CARD CEK KESEHATAN HOLISTIK (SMART TRIAGE) -->
+    <div class="w-full">
+      <div
+        class="bg-white/90 border border-sage-200 rounded-2xl p-4 sm:p-5 shadow-sm"
+      >
+        <div class="flex items-center justify-between mb-3">
+          <div>
+            <p
+              class="text-xs font-semibold text-sage-600 uppercase tracking-wide"
+            >
+              Cek Kesehatan Holistik
+            </p>
+            <p class="text-[11px] text-gray-500">
+              Kombinasikan keluhan fisik dan kondisi pikiran Anda untuk
+              mendapatkan rekomendasi layanan yang lebih tepat.
+            </p>
+          </div>
+          <i class="fa-solid fa-stethoscope text-sage-500 text-lg"></i>
         </div>
 
+        <div class="space-y-3 text-sm">
+          <div>
+            <label
+              for="physicalSymptom"
+              class="block text-xs font-medium text-gray-600 mb-1"
+            >
+              Keluhan Fisik Utama
+            </label>
+            <select
+              id="physicalSymptom"
+              class="w-full p-2 rounded-lg border border-sage-200 text-xs bg-sage-50 focus:outline-none focus:ring-1 focus:ring-sage-500 focus:border-sage-500"
+            >
+              <option value="">Pilih Keluhan Fisik</option>
+              <option value="headache">Sakit Kepala / Migrain</option>
+              <option value="maag">Maag / GERD</option>
+              <option value="gigi">Gigi Menggeretak</option>
+              <option value="jantung">Jantung Berdebar</option>
+            </select>
+          </div>
+
+          <div>
+            <label
+              for="mentalSymptom"
+              class="block text-xs font-medium text-gray-600 mb-1"
+            >
+              Kondisi Pikiran Saat Ini
+            </label>
+            <select
+              id="mentalSymptom"
+              class="w-full p-2 rounded-lg border border-sage-200 text-xs bg-sage-50 focus:outline-none focus:ring-1 focus:ring-sage-500 focus:border-sage-500"
+            >
+              <option value="">Pilih Kondisi Pikiran</option>
+              <option value="stres">Stres Kerja</option>
+              <option value="cemas">Cemas / Anxiety</option>
+              <option value="tidur">Susah Tidur</option>
+              <option value="burnout">Burnout</option>
+            </select>
+          </div>
+
+          <button
+            id="analyzeBtn"
+            type="button"
+            class="mt-1 w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-sage-600 text-white text-xs sm:text-sm font-semibold shadow-md hover:bg-sage-700 hover:shadow-lg transition"
+          >
+            <i class="fa-solid fa-magnifying-glass-chart"></i>
+            Analisis Keluhan Saya
+          </button>
+
+          <!-- HASIL REKOMENDASI TRIAGE -->
+          <div id="recommendationResult" class="hidden text-sm"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+          <!-- END HERO -->
+
+          <!-- KONTEN BERANDA: DOKTER -->
+          <div class="text-center max-w-2xl mx-auto mb-10">
+            <h2 class="text-2xl font-bold text-sage-900 mb-2">Dokter yang Bertugas Hari Ini</h2>
+            <p class="text-sm text-gray-500">Tim ahli kami siap mendengarkan keluhan fisik dan mental Anda.</p>
+          </div>
+          <div id="doctorList" class="grid sm:grid-cols-2 gap-4">
+              <!-- Diisi oleh renderDoctors() -->
+          </div>
+        </div>
+        <!-- ===================== END BERANDA ===================== -->
+
+        <!-- ===================== PROFIL ===================== -->
         <div id="profil" class="spa-section hidden opacity-0 translate-y-2">
             <div class="grid md:grid-cols-2 gap-8 items-center">
                 <div class="space-y-4">
@@ -207,9 +312,12 @@
             </div>
         </div>
 
+        <!-- ===================== TERAPI ===================== -->
         <div id="terapi" class="spa-section hidden opacity-0 translate-y-2">
             <div class="text-center mb-8">
-                <h2 class="text-2xl font-bold text-sage-900">Ruang Tenang Digital</h2>
+                <h2 id="terapiTitle" class="text-2xl font-bold text-sage-900">
+                  Ruang Tenang Digital
+                </h2>
                 <p class="text-sm text-gray-500">Kurangi kecemasan Anda sambil menunggu antrean. Ikuti irama lingkaran di bawah.</p>
             </div>
             <div class="flex flex-col items-center justify-center py-4">
@@ -227,6 +335,7 @@
             </div>
         </div>
 
+        <!-- ===================== HTM / LAYANAN ===================== -->
         <div id="htm" class="spa-section hidden opacity-0 translate-y-2">
             <div class="grid lg:grid-cols-[1.5fr,1fr] gap-8">
                 <div>
@@ -242,7 +351,8 @@
                                 </tr>
                             </thead>
                             <tbody id="servicesTableBody" class="divide-y divide-sage-100 text-gray-600">
-                                </tbody>
+                                <!-- diisi renderServices() -->
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -286,6 +396,7 @@
             </div>
         </div>
 
+        <!-- ===================== KONTAK ===================== -->
         <div id="kontak" class="spa-section hidden opacity-0 translate-y-2">
             <div class="grid md:grid-cols-2 gap-8">
                 <div>
@@ -326,4 +437,5 @@
 
     <script src="script.js"></script>
   </body>
+
 </html>
