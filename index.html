@@ -101,31 +101,37 @@
       </div>
     </nav>
 
-    <nav class="fixed bottom-0 inset-x-0 z-20 bg-white border-t border-sage-200 sm:hidden shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]">
-      <div class="hidden sm:flex items-center gap-1 text-sm bg-sage-100/50 p-1 rounded-full">
-        <button class="nav-link tab-active px-4 py-1.5 rounded-full text-sage-600 font-medium transition-all duration-200 flex items-center gap-2" data-target="beranda">
-          <i class="fa-solid fa-house text-xs"></i> 
-          Beranda
+    <nav class="fixed bottom-0 inset-x-0 z-50 bg-white border-t border-sage-200 sm:hidden shadow-[0_-4px_15px_rgba(0,0,0,0.05)] pb-safe">
+      <div class="flex items-center justify-around px-2 py-3">
+        <button class="nav-link tab-active group flex flex-col items-center justify-center gap-1 p-2 rounded-2xl w-16 transition-all duration-300" data-target="beranda">
+          <i class="fa-solid fa-house text-lg mb-0.5 group-hover:-translate-y-1 transition-transform"></i>
+          <span class="text-[10px] font-medium tracking-wide">Home</span>
         </button>
-      
-        <button class="nav-link px-4 py-1.5 rounded-full text-sage-600 hover:bg-sage-200 transition-all duration-200 flex items-center gap-2" data-target="profil">
-          <i class="fa-solid fa-user-doctor text-xs"></i>
-          Profil
+    
+        <button class="nav-link group flex flex-col items-center justify-center gap-1 p-2 rounded-2xl w-16 transition-all duration-300" data-target="profil">
+          <i class="fa-solid fa-user-doctor text-lg mb-0.5 group-hover:-translate-y-1 transition-transform"></i>
+          <span class="text-[10px] font-medium tracking-wide">Profil</span>
         </button>
-      
-        <button class="nav-link px-4 py-1.5 rounded-full text-sage-600 hover:bg-sage-200 transition-all duration-200 flex items-center gap-2" data-target="terapi">
-          <i class="fa-solid fa-wind text-xs"></i> 
-          Terapi
+    
+        <button class="nav-link group flex flex-col items-center justify-center gap-1 p-2 rounded-2xl w-16 transition-all duration-300" data-target="terapi">
+          <div class="relative">
+              <i class="fa-solid fa-wind text-lg mb-0.5 group-hover:rotate-12 transition-transform"></i>
+              <span class="absolute -top-1 -right-1 flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sage-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-sage-500"></span>
+              </span>
+          </div>
+          <span class="text-[10px] font-medium tracking-wide">Terapi</span>
         </button>
-      
-        <button class="nav-link px-4 py-1.5 rounded-full text-sage-600 hover:bg-sage-200 transition-all duration-200 flex items-center gap-2" data-target="htm">
-          <i class="fa-solid fa-hand-holding-heart text-xs"></i>
-          Layanan
+    
+        <button class="nav-link group flex flex-col items-center justify-center gap-1 p-2 rounded-2xl w-16 transition-all duration-300" data-target="htm">
+          <i class="fa-solid fa-hand-holding-heart text-lg mb-0.5 group-hover:-translate-y-1 transition-transform"></i>
+          <span class="text-[10px] font-medium tracking-wide">Biaya</span>
         </button>
-      
-        <button class="nav-link px-4 py-1.5 rounded-full text-sage-600 hover:bg-sage-200 transition-all duration-200 flex items-center gap-2" data-target="kontak">
-          <i class="fa-solid fa-address-book text-xs"></i>
-          Kontak
+    
+        <button class="nav-link group flex flex-col items-center justify-center gap-1 p-2 rounded-2xl w-16 transition-all duration-300" data-target="kontak">
+          <i class="fa-solid fa-address-book text-lg mb-0.5 group-hover:-translate-y-1 transition-transform"></i>
+          <span class="text-[10px] font-medium tracking-wide">Kontak</span>
         </button>
       </div>
     </nav>
