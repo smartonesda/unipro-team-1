@@ -71,21 +71,26 @@
         </div>
 
         <div class="hidden sm:flex items-center gap-1 text-sm bg-sage-100/50 p-1 rounded-full">
-          <button class="nav-link tab-active px-4 py-1.5 rounded-full text-sage-600 font-medium transition-all duration-200" data-target="beranda">
-            Beranda
-          </button>
-          <button class="nav-link px-4 py-1.5 rounded-full text-sage-600 hover:bg-sage-200 transition-all duration-200" data-target="profil">
-            Profil
-          </button>
-          <button class="nav-link px-4 py-1.5 rounded-full text-sage-600 hover:bg-sage-200 transition-all duration-200" data-target="terapi">
-            <i class="fa-solid fa-wind mr-1"></i> Terapi
-          </button>
-          <button class="nav-link px-4 py-1.5 rounded-full text-sage-600 hover:bg-sage-200 transition-all duration-200" data-target="htm">
-            Layanan
-          </button>
-          <button class="nav-link px-4 py-1.5 rounded-full text-sage-600 hover:bg-sage-200 transition-all duration-200" data-target="kontak">
-            Kontak
-          </button>
+            <button class="nav-link tab-active px-4 py-1.5 rounded-full text-sage-600 font-medium transition-all duration-200 flex items-center gap-2" data-target="beranda">
+                <i class="fa-solid fa-house text-xs"></i> 
+                Beranda
+            </button>
+            <button class="nav-link px-4 py-1.5 rounded-full text-sage-600 hover:bg-sage-200 transition-all duration-200 flex items-center gap-2" data-target="profil">
+                <i class="fa-solid fa-user-doctor text-xs"></i>
+                Profil
+            </button>
+            <button class="nav-link px-4 py-1.5 rounded-full text-sage-600 hover:bg-sage-200 transition-all duration-200 flex items-center gap-2" data-target="terapi">
+                <i class="fa-solid fa-wind text-xs"></i> 
+                Terapi
+            </button>
+            <button class="nav-link px-4 py-1.5 rounded-full text-sage-600 hover:bg-sage-200 transition-all duration-200 flex items-center gap-2" data-target="htm">
+                <i class="fa-solid fa-hand-holding-heart text-xs"></i>
+                Layanan
+            </button>
+            <button class="nav-link px-4 py-1.5 rounded-full text-sage-600 hover:bg-sage-200 transition-all duration-200 flex items-center gap-2" data-target="kontak">
+                <i class="fa-solid fa-address-book text-xs"></i>
+                Kontak
+            </button>
         </div>
 
         <div class="flex items-center gap-2 text-xs">
@@ -102,203 +107,151 @@
     </nav>
 
     <nav class="fixed bottom-0 inset-x-0 z-50 bg-white border-t border-sage-200 sm:hidden shadow-[0_-4px_15px_rgba(0,0,0,0.05)] pb-safe">
-      <div class="flex items-center justify-around px-2 py-3">
-        <button class="nav-link tab-active group flex flex-col items-center justify-center gap-1 p-2 rounded-2xl w-16 transition-all duration-300" data-target="beranda">
-          <i class="fa-solid fa-house text-lg mb-0.5 group-hover:-translate-y-1 transition-transform"></i>
-          <span class="text-[10px] font-medium tracking-wide">Home</span>
-        </button>
-    
-        <button class="nav-link group flex flex-col items-center justify-center gap-1 p-2 rounded-2xl w-16 transition-all duration-300" data-target="profil">
-          <i class="fa-solid fa-user-doctor text-lg mb-0.5 group-hover:-translate-y-1 transition-transform"></i>
-          <span class="text-[10px] font-medium tracking-wide">Profil</span>
-        </button>
-    
-        <button class="nav-link group flex flex-col items-center justify-center gap-1 p-2 rounded-2xl w-16 transition-all duration-300" data-target="terapi">
-          <div class="relative">
-              <i class="fa-solid fa-wind text-lg mb-0.5 group-hover:rotate-12 transition-transform"></i>
-              <span class="absolute -top-1 -right-1 flex h-2 w-2">
-                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sage-400 opacity-75"></span>
-                <span class="relative inline-flex rounded-full h-2 w-2 bg-sage-500"></span>
-              </span>
-          </div>
-          <span class="text-[10px] font-medium tracking-wide">Terapi</span>
-        </button>
-    
-        <button class="nav-link group flex flex-col items-center justify-center gap-1 p-2 rounded-2xl w-16 transition-all duration-300" data-target="htm">
-          <i class="fa-solid fa-hand-holding-heart text-lg mb-0.5 group-hover:-translate-y-1 transition-transform"></i>
-          <span class="text-[10px] font-medium tracking-wide">Biaya</span>
-        </button>
-    
-        <button class="nav-link group flex flex-col items-center justify-center gap-1 p-2 rounded-2xl w-16 transition-all duration-300" data-target="kontak">
-          <i class="fa-solid fa-address-book text-lg mb-0.5 group-hover:-translate-y-1 transition-transform"></i>
-          <span class="text-[10px] font-medium tracking-wide">Kontak</span>
-        </button>
-      </div>
+        <div class="flex items-center justify-around px-2 py-3">
+            <button class="nav-link tab-active group flex flex-col items-center justify-center gap-1 p-2 rounded-2xl w-16 transition-all duration-300" data-target="beranda">
+            <i class="fa-solid fa-house text-lg mb-0.5 group-hover:-translate-y-1 transition-transform"></i>
+            <span class="text-[10px] font-medium tracking-wide">Home</span>
+            </button>
+
+            <button class="nav-link group flex flex-col items-center justify-center gap-1 p-2 rounded-2xl w-16 transition-all duration-300" data-target="profil">
+            <i class="fa-solid fa-user-doctor text-lg mb-0.5 group-hover:-translate-y-1 transition-transform"></i>
+            <span class="text-[10px] font-medium tracking-wide">Profil</span>
+            </button>
+
+            <button class="nav-link group flex flex-col items-center justify-center gap-1 p-2 rounded-2xl w-16 transition-all duration-300" data-target="terapi">
+            <div class="relative">
+                <i class="fa-solid fa-wind text-lg mb-0.5 group-hover:rotate-12 transition-transform"></i>
+                <span class="absolute -top-1 -right-1 flex h-2 w-2">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sage-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-sage-500"></span>
+                </span>
+            </div>
+            <span class="text-[10px] font-medium tracking-wide">Terapi</span>
+            </button>
+
+            <button class="nav-link group flex flex-col items-center justify-center gap-1 p-2 rounded-2xl w-16 transition-all duration-300" data-target="htm">
+            <i class="fa-solid fa-hand-holding-heart text-lg mb-0.5 group-hover:-translate-y-1 transition-transform"></i>
+            <span class="text-[10px] font-medium tracking-wide">Biaya</span>
+            </button>
+
+            <button class="nav-link group flex flex-col items-center justify-center gap-1 p-2 rounded-2xl w-16 transition-all duration-300" data-target="kontak">
+            <i class="fa-solid fa-address-book text-lg mb-0.5 group-hover:-translate-y-1 transition-transform"></i>
+            <span class="text-[10px] font-medium tracking-wide">Kontak</span>
+            </button>
+        </div>
     </nav>
 
     <main class="max-w-6xl mx-auto px-4 pt-8 pb-24 sm:pb-10">
       
-      <!-- HERO SECTION DIPINDAHKAN MASUK BERANDA, JADI DIHAPUS DARI SINI -->
-
       <section id="content-container" class="glass-card bg-white/60 rounded-3xl p-6 md:p-8 shadow-xl min-h-[400px] border border-white">
         
-        <!-- ===================== BERANDA ===================== -->
-        <div id="beranda" class="spa-section transition-all duration-300 ease-out opacity-100 translate-y-0">
+        <div id="beranda" class="spa-section">
 
-          <!-- HERO SECTION SEKARANG DI DALAM #beranda -->
-          <!-- HERO BERANDA -->
-<section class="mb-8 grid md:grid-cols-[1.3fr,1fr] gap-6 items-start">
-  <!-- KOLOM KIRI: Badge + Headline + Deskripsi -->
-  <div class="space-y-4">
-    <div
-      class="inline-flex items-center gap-2 text-[11px] px-3 py-1 rounded-full bg-sage-100 text-sage-700 border border-sage-200 font-medium"
-    >
-      <span class="w-2 h-2 rounded-full bg-sage-500 animate-pulse"></span>
-      Diagnosis Ganda: Fisik & Mental
-    </div>
+          <section class="mb-8 grid md:grid-cols-[1.3fr,1fr] gap-6 items-start">
+            <div class="space-y-4">
+              <div class="inline-flex items-center gap-2 text-[11px] px-3 py-1 rounded-full bg-sage-100 text-sage-700 border border-sage-200 font-medium">
+                <span class="w-2 h-2 rounded-full bg-sage-500 animate-pulse"></span>
+                Diagnosis Ganda: Fisik & Mental
+              </div>
 
-    <h1 class="text-3xl md:text-5xl font-bold leading-tight text-sage-900">
-      Bukan Sekadar Obat.<br />
-      Kami Sembuhkan
-      <span class="text-sage-600 italic">Akar Masalahnya.</span>
-    </h1>
+              <h1 class="text-3xl md:text-5xl font-bold leading-tight text-sage-900">
+                Bukan Sekadar Obat.<br />
+                Kami Sembuhkan
+                <span class="text-sage-600 italic">Akar Masalahnya.</span>
+              </h1>
 
-    <p class="text-sm md:text-base text-gray-600 max-w-xl leading-relaxed">
-      Sakit kepala berulang? Maag kronis? Rahang kaku? Tahukah Anda,
-      <strong>80% penyakit fisik</strong> masyarakat urban bermula dari stres
-      yang tidak terdeteksi? Nova Holistic Hub menyatukan pendekatan medis dan
-      mindfulness, agar tubuh dan pikiran pulih secara bersamaan.
-    </p>
-  </div>
+              <p class="text-sm md:text-base text-gray-600 max-w-xl leading-relaxed">
+                Sakit kepala berulang? Maag kronis? Rahang kaku? Tahukah Anda,
+                <strong>80% penyakit fisik</strong> masyarakat urban bermula dari stres
+                yang tidak terdeteksi? Nova Holistic Hub menyatukan pendekatan medis dan
+                mindfulness, agar tubuh dan pikiran pulih secara bersamaan.
+              </p>
+            </div>
 
-  <!-- KOLOM KANAN: STACK Self Check-in + Smart Triage -->
-  <div class="flex flex-col gap-6">
-    <!-- CARD SELF CHECK-IN -->
-    <div
-      class="glass-card p-6 rounded-3xl w-full bg-white/80 border border-sage-200 shadow-md"
-    >
-      <div class="flex justify-between items-center mb-4">
-        <div class="text-xs font-semibold text-sage-500 uppercase tracking-wider">
-          Self Check-in
-        </div>
-        <div class="w-2 h-2 rounded-full bg-emerald-400"></div>
-      </div>
+            <div class="flex flex-col gap-6">
+              <div class="glass-card p-6 rounded-3xl w-full bg-white/80 border border-sage-200 shadow-md">
+                <div class="flex justify-between items-center mb-4">
+                  <div class="text-xs font-semibold text-sage-500 uppercase tracking-wider">
+                    Self Check-in
+                  </div>
+                  <div class="w-2 h-2 rounded-full bg-emerald-400"></div>
+                </div>
 
-      <div class="text-center py-4">
-        <p class="text-xs text-gray-500 mb-1">Nomor Antrean Anda</p>
-        <p
-          id="queueNumberCard"
-          class="text-4xl font-bold text-sage-800 tracking-widest my-2"
-        >
-          --
-        </p>
-        <p
-          id="queueStatusCard"
-          class="text-xs font-medium text-sage-600 bg-sage-100 inline-block px-3 py-1 rounded-full"
-        >
-          Menunggu Check-in
-        </p>
-      </div>
+                <div class="text-center py-4">
+                  <p class="text-xs text-gray-500 mb-1">Nomor Antrean Anda</p>
+                  <p id="queueNumberCard" class="text-4xl font-bold text-sage-800 tracking-widest my-2">
+                    --
+                  </p>
+                  <p id="queueStatusCard" class="text-xs font-medium text-sage-600 bg-sage-100 inline-block px-3 py-1 rounded-full">
+                    Menunggu Check-in
+                  </p>
+                </div>
 
-      <button
-        id="takeQueueBtn"
-        class="w-full mt-4 py-3 rounded-xl bg-gradient-to-r from-sage-600 to-sage-500 text-white text-sm font-semibold shadow-md hover:shadow-lg transition"
-      >
-        Ambil Antrean Sekarang
-      </button>
-    </div>
+                <button id="takeQueueBtn" class="w-full mt-4 py-3 rounded-xl bg-gradient-to-r from-sage-600 to-sage-500 text-white text-sm font-semibold shadow-md hover:shadow-lg transition">
+                  Ambil Antrean Sekarang
+                </button>
+              </div>
 
-    <!-- CARD CEK KESEHATAN HOLISTIK (SMART TRIAGE) -->
-    <div class="w-full">
-      <div
-        class="bg-white/90 border border-sage-200 rounded-2xl p-4 sm:p-5 shadow-sm"
-      >
-        <div class="flex items-center justify-between mb-3">
-          <div>
-            <p
-              class="text-xs font-semibold text-sage-600 uppercase tracking-wide"
-            >
-              Cek Kesehatan Holistik
-            </p>
-            <p class="text-[11px] text-gray-500">
-              Kombinasikan keluhan fisik dan kondisi pikiran Anda untuk
-              mendapatkan rekomendasi layanan yang lebih tepat.
-            </p>
-          </div>
-          <i class="fa-solid fa-stethoscope text-sage-500 text-lg"></i>
-        </div>
+              <div class="w-full">
+                <div class="bg-white/90 border border-sage-200 rounded-2xl p-4 sm:p-5 shadow-sm">
+                  <div class="flex items-center justify-between mb-3">
+                    <div>
+                      <p class="text-xs font-semibold text-sage-600 uppercase tracking-wide">
+                        Cek Kesehatan Holistik
+                      </p>
+                      <p class="text-[11px] text-gray-500">
+                        Kombinasikan keluhan fisik dan kondisi pikiran Anda.
+                      </p>
+                    </div>
+                    <i class="fa-solid fa-stethoscope text-sage-500 text-lg"></i>
+                  </div>
 
-        <div class="space-y-3 text-sm">
-          <div>
-            <label
-              for="physicalSymptom"
-              class="block text-xs font-medium text-gray-600 mb-1"
-            >
-              Keluhan Fisik Utama
-            </label>
-            <select
-              id="physicalSymptom"
-              class="w-full p-2 rounded-lg border border-sage-200 text-xs bg-sage-50 focus:outline-none focus:ring-1 focus:ring-sage-500 focus:border-sage-500"
-            >
-              <option value="">Pilih Keluhan Fisik</option>
-              <option value="headache">Sakit Kepala / Migrain</option>
-              <option value="maag">Maag / GERD</option>
-              <option value="gigi">Gigi Menggeretak</option>
-              <option value="jantung">Jantung Berdebar</option>
-            </select>
-          </div>
+                  <div class="space-y-3 text-sm">
+                    <div>
+                      <label for="physicalSymptom" class="block text-xs font-medium text-gray-600 mb-1">
+                        Keluhan Fisik Utama
+                      </label>
+                      <select id="physicalSymptom" class="w-full p-2 rounded-lg border border-sage-200 text-xs bg-sage-50 focus:outline-none focus:ring-1 focus:ring-sage-500 focus:border-sage-500">
+                        <option value="">Pilih Keluhan Fisik</option>
+                        <option value="headache">Sakit Kepala / Migrain</option>
+                        <option value="maag">Maag / GERD</option>
+                        <option value="gigi">Gigi Menggeretak</option>
+                        <option value="jantung">Jantung Berdebar</option>
+                      </select>
+                    </div>
 
-          <div>
-            <label
-              for="mentalSymptom"
-              class="block text-xs font-medium text-gray-600 mb-1"
-            >
-              Kondisi Pikiran Saat Ini
-            </label>
-            <select
-              id="mentalSymptom"
-              class="w-full p-2 rounded-lg border border-sage-200 text-xs bg-sage-50 focus:outline-none focus:ring-1 focus:ring-sage-500 focus:border-sage-500"
-            >
-              <option value="">Pilih Kondisi Pikiran</option>
-              <option value="stres">Stres Kerja</option>
-              <option value="cemas">Cemas / Anxiety</option>
-              <option value="tidur">Susah Tidur</option>
-              <option value="burnout">Burnout</option>
-            </select>
-          </div>
+                    <div>
+                      <label for="mentalSymptom" class="block text-xs font-medium text-gray-600 mb-1">
+                        Kondisi Pikiran Saat Ini
+                      </label>
+                      <select id="mentalSymptom" class="w-full p-2 rounded-lg border border-sage-200 text-xs bg-sage-50 focus:outline-none focus:ring-1 focus:ring-sage-500 focus:border-sage-500">
+                        <option value="">Pilih Kondisi Pikiran</option>
+                        <option value="stres">Stres Kerja</option>
+                        <option value="cemas">Cemas / Anxiety</option>
+                        <option value="tidur">Susah Tidur</option>
+                        <option value="burnout">Burnout</option>
+                      </select>
+                    </div>
 
-          <button
-            id="analyzeBtn"
-            type="button"
-            class="mt-1 w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-sage-600 text-white text-xs sm:text-sm font-semibold shadow-md hover:bg-sage-700 hover:shadow-lg transition"
-          >
-            <i class="fa-solid fa-magnifying-glass-chart"></i>
-            Analisis Keluhan Saya
-          </button>
+                    <button id="analyzeBtn" type="button" class="mt-1 w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-sage-600 text-white text-xs sm:text-sm font-semibold shadow-md hover:bg-sage-700 hover:shadow-lg transition">
+                      <i class="fa-solid fa-magnifying-glass-chart"></i>
+                      Analisis Keluhan Saya
+                    </button>
 
-          <!-- HASIL REKOMENDASI TRIAGE -->
-          <div id="recommendationResult" class="hidden text-sm"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+                    <div id="recommendationResult" class="hidden text-sm"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
 
-          <!-- END HERO -->
-
-          <!-- KONTEN BERANDA: DOKTER -->
           <div class="text-center max-w-2xl mx-auto mb-10">
             <h2 class="text-2xl font-bold text-sage-900 mb-2">Dokter yang Bertugas Hari Ini</h2>
             <p class="text-sm text-gray-500">Tim ahli kami siap mendengarkan keluhan fisik dan mental Anda.</p>
           </div>
-          <div id="doctorList" class="grid sm:grid-cols-2 gap-4">
-              <!-- Diisi oleh renderDoctors() -->
-          </div>
+          <div id="doctorList" class="grid sm:grid-cols-2 gap-4"></div>
         </div>
-        <!-- ===================== END BERANDA ===================== -->
-
-        <!-- ===================== PROFIL ===================== -->
-        <div id="profil" class="spa-section hidden opacity-0 translate-y-2">
+        <div id="profil" class="spa-section hidden">
             <div class="grid md:grid-cols-2 gap-8 items-center">
                 <div class="space-y-4">
                     <h2 class="text-2xl font-bold text-sage-900">Mengapa Nova Holistic?</h2>
@@ -326,8 +279,7 @@
             </div>
         </div>
 
-        <!-- ===================== TERAPI ===================== -->
-        <div id="terapi" class="spa-section hidden opacity-0 translate-y-2">
+        <div id="terapi" class="spa-section hidden">
             <div class="text-center mb-8">
                 <h2 id="terapiTitle" class="text-2xl font-bold text-sage-900">
                   Ruang Tenang Digital
@@ -349,8 +301,7 @@
             </div>
         </div>
 
-        <!-- ===================== HTM / LAYANAN ===================== -->
-        <div id="htm" class="spa-section hidden opacity-0 translate-y-2">
+        <div id="htm" class="spa-section hidden">
             <div class="grid lg:grid-cols-[1.5fr,1fr] gap-8">
                 <div>
                     <h3 class="font-bold text-sage-900 mb-4 flex items-center gap-2">
@@ -364,9 +315,7 @@
                                     <th class="px-4 py-3 text-right">Biaya</th>
                                 </tr>
                             </thead>
-                            <tbody id="servicesTableBody" class="divide-y divide-sage-100 text-gray-600">
-                                <!-- diisi renderServices() -->
-                            </tbody>
+                            <tbody id="servicesTableBody" class="divide-y divide-sage-100 text-gray-600"></tbody>
                         </table>
                     </div>
                 </div>
@@ -410,8 +359,7 @@
             </div>
         </div>
 
-        <!-- ===================== KONTAK ===================== -->
-        <div id="kontak" class="spa-section hidden opacity-0 translate-y-2">
+        <div id="kontak" class="spa-section hidden">
             <div class="grid md:grid-cols-2 gap-8">
                 <div>
                     <h2 class="text-2xl font-bold text-sage-900 mb-4">Hubungi Kami</h2>
@@ -451,5 +399,4 @@
 
     <script src="script.js"></script>
   </body>
-
 </html>
