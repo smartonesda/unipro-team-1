@@ -102,22 +102,30 @@
     </nav>
 
     <nav class="fixed bottom-0 inset-x-0 z-20 bg-white border-t border-sage-200 sm:hidden shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]">
-      <div class="max-w-md mx-auto flex items-center justify-between px-6 py-3 text-[10px]">
-        <button class="nav-link tab-active flex flex-col items-center gap-1 text-sage-600" data-target="beranda">
-          <i class="fa-solid fa-house-chimney text-base"></i>
-          <span>Home</span>
+      <div class="hidden sm:flex items-center gap-1 text-sm bg-sage-100/50 p-1 rounded-full">
+        <button class="nav-link tab-active px-4 py-1.5 rounded-full text-sage-600 font-medium transition-all duration-200 flex items-center gap-2" data-target="beranda">
+          <i class="fa-solid fa-house text-xs"></i> 
+          Beranda
         </button>
-        <button class="nav-link flex flex-col items-center gap-1 text-sage-400" data-target="terapi">
-          <i class="fa-solid fa-wind text-base"></i>
-          <span>Terapi</span>
+      
+        <button class="nav-link px-4 py-1.5 rounded-full text-sage-600 hover:bg-sage-200 transition-all duration-200 flex items-center gap-2" data-target="profil">
+          <i class="fa-solid fa-user-doctor text-xs"></i>
+          Profil
         </button>
-        <button class="nav-link flex flex-col items-center gap-1 text-sage-400" data-target="htm">
-          <i class="fa-solid fa-receipt text-base"></i>
-          <span>Biaya</span>
+      
+        <button class="nav-link px-4 py-1.5 rounded-full text-sage-600 hover:bg-sage-200 transition-all duration-200 flex items-center gap-2" data-target="terapi">
+          <i class="fa-solid fa-wind text-xs"></i> 
+          Terapi
         </button>
-        <button class="nav-link flex flex-col items-center gap-1 text-sage-400" data-target="kontak">
-          <i class="fa-solid fa-headset text-base"></i>
-          <span>Kontak</span>
+      
+        <button class="nav-link px-4 py-1.5 rounded-full text-sage-600 hover:bg-sage-200 transition-all duration-200 flex items-center gap-2" data-target="htm">
+          <i class="fa-solid fa-hand-holding-heart text-xs"></i>
+          Layanan
+        </button>
+      
+        <button class="nav-link px-4 py-1.5 rounded-full text-sage-600 hover:bg-sage-200 transition-all duration-200 flex items-center gap-2" data-target="kontak">
+          <i class="fa-solid fa-address-book text-xs"></i>
+          Kontak
         </button>
       </div>
     </nav>
