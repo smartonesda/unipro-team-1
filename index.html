@@ -288,7 +288,7 @@
             </div>
             <div class="flex flex-col items-center justify-center py-4">
                 <div class="relative w-64 h-64 flex items-center justify-center cursor-pointer group" onclick="startBreathing()">
-                    <div id="breathe-circle" class="absolute inset-0 rounded-full bg-gradient-to-tr from-sage-300 via-teal-200 to-sage-400 opacity-60 mix-blend-multiply blur-xl transform scale-100 transition-all duration-[4000ms] ease-in-out"></div>
+                    <div id="breathe-circle" class="absolute inset-0 bg-sage-400 rounded-full opacity-20 transform scale-100 transition-all duration-[4000ms] ease-in-out"></div>
                     <div class="absolute inset-4 border-2 border-sage-300 rounded-full border-dashed animate-[spin_10s_linear_infinite]"></div>
                     <div id="play-icon" class="absolute z-10 text-sage-600 text-5xl opacity-80 group-hover:scale-110 transition duration-300">
                         <i class="fa-solid fa-play"></i>
@@ -307,17 +307,20 @@
                     <h3 class="font-bold text-sage-900 mb-4 flex items-center gap-2">
                         <i class="fa-solid fa-list-check text-sage-600"></i> Pilih Layanan
                     </h3>
-                    <div class="bg-white border border-sage-100 rounded-xl overflow-hidden shadow-sm">
-                        <table class="w-full text-sm text-left">
-                            <thead class="bg-sage-50 text-sage-700">
-                                <tr>
-                                    <th class="px-4 py-3">Nama Layanan</th>
-                                    <th class="px-4 py-3 text-right">Biaya</th>
-                                </tr>
-                            </thead>
-                            <tbody id="servicesTableBody" class="divide-y divide-sage-100 text-gray-600"></tbody>
-                        </table>
-                    </div>
+                    <div class="bg-white border border-sage-100 rounded-xl shadow-sm overflow-hidden">
+                      <div class="overflow-x-auto custom-scrollbar pb-2"> 
+                          <table class="w-full text-sm text-left whitespace-nowrap"> 
+                              <thead class="bg-sage-50 text-sage-700">
+                                  <tr>
+                                      <th class="px-4 py-3">Nama Layanan</th>
+                                      <th class="px-4 py-3 text-right">Biaya</th>
+                                  </tr>
+                              </thead>
+                              <tbody id="servicesTableBody" class="divide-y divide-sage-100 text-gray-600">
+                                  </tbody>
+                          </table>
+                      </div>
+                  </div>
                 </div>
                 <div class="bg-sage-50 p-6 rounded-2xl border border-sage-200 h-fit">
                     <h3 class="font-bold text-sage-900 mb-4 flex items-center gap-2">
