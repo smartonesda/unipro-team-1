@@ -42,10 +42,7 @@ Sesuai ketentuan teknis kompetisi (Native Approach):
 - **FontAwesome:** Library ikon antarmuka (User Interface Assets).
 
 ## 📂 Struktur File
-├── index.html # Halaman utama & Layout (SPA Structure) 
-├── script.js # Logika Bisnis (Data Dokter, Kalkulator, Analisis, Animasi) 
-├── style.css # Custom CSS (Scrollbar, Keyframes Animasi, Glassmorphism) 
-└── README.md # Dokumentasi Proyek
+/ ├── index.html # Halaman utama & Layout (SPA Structure) ├── script.js # Logika Bisnis (Data Dokter, Kalkulator, Analisis, Animasi) ├── style.css # Custom CSS (Scrollbar, Keyframes Animasi, Glassmorphism) └── README.md # Dokumentasi Proyek
 
 ## 👨‍💻 Tim Pengembang
 **Team Smartone Care** - SMKS ANTARTIKA 1 SIDOARJO
