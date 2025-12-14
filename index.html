@@ -287,15 +287,14 @@
                 <p class="text-sm text-gray-500">Kurangi kecemasan Anda sambil menunggu antrean. Ikuti irama lingkaran di bawah.</p>
             </div>
             <div class="flex flex-col items-center justify-center py-4">
-                <div class="relative w-64 h-64 flex items-center justify-center cursor-pointer group" onclick="startBreathing()">
+                <div class="relative w-64 h-64 flex items-center justify-center cursor-pointer group select-none" onclick="startBreathing()">
                     <div id="breathe-circle" class="absolute inset-0 bg-sage-400 rounded-full opacity-20 transform scale-100 transition-all duration-[4000ms] ease-in-out"></div>
-                    <div class="absolute inset-4 border-2 border-sage-300 rounded-full border-dashed animate-[spin_10s_linear_infinite]"></div>
-                    <div id="play-icon" class="absolute z-10 text-sage-600 text-5xl opacity-80 group-hover:scale-110 transition duration-300">
-                        <i class="fa-solid fa-play"></i>
-                    </div>
-                    <div class="z-10 text-center">
-                        <span id="breathe-text" class="block text-xl font-bold text-sage-800 mt-8 transition-all">Mulai</span>
-                        <span id="breathe-sub" class="text-xs text-sage-500 uppercase tracking-wider">Tap Disini</span>
+                    
+                    <div class="absolute inset-4 border-2 border-sage-300 rounded-full border-dashed animate-[spin_12s_linear_infinite] opacity-60"></div>
+                    
+                    <div class="z-10 text-center pointer-events-none">
+                        <span id="breathe-text" class="block text-xl font-bold text-sage-800 transition-all duration-500">Mulai</span>
+                        <span id="breathe-sub" class="text-[10px] text-sage-500 uppercase tracking-widest mt-1">Sentuh Lingkaran</span>
                     </div>
                 </div>
             </div>
