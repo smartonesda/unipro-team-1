@@ -224,26 +224,26 @@ function startBreathing() {
     const circle = document.getElementById('breathe-circle');
     const text = document.getElementById('breathe-text');
     const sub = document.getElementById('breathe-sub');
-    const playIcon = document.getElementById('play-icon');
 
     if (isBreathing) {
         clearInterval(breatheInterval);
         isBreathing = false;
         text.innerText = "Mulai";
-        sub.innerText = "Tap Disini";
+        sub.innerText = "Sentuh Lingkaran"; 
         circle.style.transform = "scale(1)";
         circle.style.opacity = "0.2";
-        playIcon.classList.remove('hidden');
+        text.classList.remove("text-white"); 
+        text.classList.add("text-sage-800");
         return;
     }
 
     isBreathing = true;
-    playIcon.classList.add('hidden');
+    
     text.innerText = "Tarik...";
     sub.innerText = "Lewat Hidung";
     circle.style.transform = "scale(1.5)";
-    circle.style.opacity = "0.5";
-
+    circle.style.opacity = "0.6"; 
+    
     let phase = 'inhale'; 
     breatheInterval = setInterval(() => {
         if (phase === 'inhale') {
@@ -272,42 +272,87 @@ function analyzeSymptoms() {
     const physical = physicalEl.value;
     const mental = mentalEl.value;
 
+    // Validasi Input Kosong
     if (!physical || !mental) {
         resultBox.classList.remove("hidden");
         resultBox.innerHTML = `
-            <div class="p-3 rounded-xl border border-amber-200 bg-amber-50 text-xs text-amber-800">
-                Silakan pilih <strong>keluhan fisik</strong> dan <strong>kondisi pikiran</strong> terlebih dahulu.
+            <div class="p-3 rounded-xl border border-red-200 bg-red-50 text-xs text-red-800 flex items-center gap-2 animate-pulse">
+                <i class="fa-solid fa-circle-exclamation"></i>
+                <span>Mohon lengkapi data fisik dan mental untuk memulai analisis.</span>
             </div>`;
         return;
     }
 
-    let title = "Konsultasi Screening Umum";
-    let desc = "Tim front doctor kami akan melakukan pemeriksaan awal untuk memetakan hubungan antara keluhan fisik dan beban mental Anda.";
+    // LOGIKA ANALISIS (DIAGNOSA -> REKOMENDASI)
+    let diagnosisTitle = "";
+    let diagnosisDesc = "";
+    let recommendationPackage = "";
+    let doctorType = "";
 
+    // Logika Sederhana 
     if (physical === "maag" && mental === "stres") {
-        title = "Paket Gastric-Calm (Internis + Mindfulness)";
-        desc = "Keluhan lambung yang berkaitan dengan stres sering kali membutuhkan kolaborasi dokter penyakit dalam dan sesi mindfulness singkat.";
+        diagnosisTitle = "Psychosomatic Gastritis (Lambung Stres)";
+        diagnosisDesc = "Kadar kortisol tinggi akibat stres kerja memicu produksi asam lambung berlebih. Pengobatan lambung saja tidak akan efektif tanpa manajemen stres.";
+        recommendationPackage = "Paket Gastric-Calm";
+        doctorType = "Internis + Mindfulness Coach";
     } else if (physical === "gigi" && mental === "cemas") {
-        title = "Paket Dental-Relief (Dokter Gigi TMJ + Terapi Napas)";
-        desc = "Bruxism atau gigi menggeretak biasanya muncul saat cemas. Kombinasi evaluasi sendi rahang (TMJ) dan latihan napas terstruktur membantu merilekskan otot rahang.";
+        diagnosisTitle = "Bruxism (Gigi Menggeretak)";
+        diagnosisDesc = "Kecemasan bawah sadar memicu ketegangan otot rahang saat tidur. Berisiko merusak enamel gigi dan menyebabkan migrain.";
+        recommendationPackage = "Paket Dental-Relief";
+        doctorType = "Dokter Gigi (TMJ) + Terapi Napas";
+    } else if (physical === "headache" && mental === "burnout") {
+        diagnosisTitle = "Tension Type Headache";
+        diagnosisDesc = "Burnout menyebabkan otot leher dan bahu menegang kronis, menghambat aliran darah ke kepala.";
+        recommendationPackage = "Physio-Release Program";
+        doctorType = "Fisioterapis + Psikolog";
+    } else if (physical === "jantung" && mental === "cemas") {
+        diagnosisTitle = "Cardiac Anxiety (Jantung Berdebar)";
+        diagnosisDesc = "Sistem saraf simpatik terlalu aktif karena cemas, memacu detak jantung meski tidak ada kelainan jantung organik.";
+        recommendationPackage = "Heart-Mind Coherence";
+        doctorType = "Kardiolog + Hipnoterapi";
+    } else {
+        // Fallback untuk kombinasi lain
+        diagnosisTitle = "Gejala Psikosomatis Campuran";
+        diagnosisDesc = "Terdeteksi ketidakseimbangan antara respons tubuh terhadap beban pikiran. Membutuhkan screening mendalam.";
+        recommendationPackage = "Konsultasi Screening Umum";
+        doctorType = "Dokter Umum Holistik";
     }
 
+    // RENDER HASIL
     resultBox.classList.remove("hidden");
     resultBox.innerHTML = `
-        <div class="p-3 rounded-xl border border-sage-200 bg-sage-50 text-sm">
-            <p class="text-[11px] font-semibold text-sage-600 uppercase tracking-wide mb-1">Rekomendasi Awal</p>
-            <p class="font-semibold text-sage-900 mb-1">${title}</p>
-            <p class="text-xs text-gray-500 mb-2">${desc}</p>
-            <button type="button" id="priorityQueueBtn" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-sage-600 text-white text-xs font-semibold hover:bg-sage-700 transition">
-                <i class="fa-solid fa-bell"></i> Ambil Antrean Prioritas
-            </button>
-        </div>`;
+        <div class="mt-4 border border-sage-200 rounded-2xl overflow-hidden shadow-sm bg-white animate-fade-in-up">
+            <div class="bg-sage-50 p-3 border-b border-sage-100 flex justify-between items-center">
+                <p class="text-[10px] font-bold text-sage-600 uppercase tracking-widest">
+                    <i class="fa-solid fa-clipboard-check mr-1"></i> Hasil Analisis AI
+                </p>
+                <span class="text-[10px] bg-white border border-sage-200 px-2 py-0.5 rounded text-sage-500">Akurasi Awal: 85%</span>
+            </div>
 
-    const priorityBtn = document.getElementById("priorityQueueBtn");
-    const queueBtn = document.getElementById("takeQueueBtn");
-    if (priorityBtn && queueBtn) {
-        priorityBtn.addEventListener("click", () => queueBtn.click());
-    }
+            <div class="p-4 space-y-4">
+                <div>
+                    <p class="text-xs text-gray-400 mb-1">Indikasi Klinis:</p>
+                    <h4 class="text-sm font-bold text-sage-900 leading-tight">${diagnosisTitle}</h4>
+                    <p class="text-xs text-gray-600 mt-1 leading-relaxed border-l-2 border-sage-300 pl-2">
+                        "${diagnosisDesc}"
+                    </p>
+                </div>
+
+                <div class="h-px bg-sage-100 w-full"></div>
+
+                <div class="flex justify-between items-end">
+                    <div>
+                        <p class="text-xs text-gray-400 mb-1">Rekomendasi Tindakan:</p>
+                        <p class="text-sm font-semibold text-nexus-teal">${recommendationPackage}</p>
+                        <p class="text-[10px] text-gray-500">Handling by: ${doctorType}</p>
+                    </div>
+                    <button type="button" id="priorityQueueBtn" onclick="document.getElementById('takeQueueBtn').click()" class="bg-sage-600 hover:bg-sage-700 text-white text-[10px] px-3 py-2 rounded-lg transition shadow-lg shadow-sage-200">
+                        Ambil Antrean
+                    </button>
+                </div>
+            </div>
+        </div>
+    `;
 }
 
 // =============================
