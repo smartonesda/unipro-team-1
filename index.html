@@ -47,7 +47,7 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   
-  <body class="bg-sage-50 text-sage-800 min-h-screen font-sans antialiased selection:bg-sage-200 selection:text-sage-900">
+  <body class="bg-sage-50 text-sage-800 min-h-screen font-sans antialiased selection:bg-sage-200 selection:text-sage-900 flex flex-col">
     
     <div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
         <div class="absolute top-0 left-1/4 w-96 h-96 bg-sage-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
@@ -141,7 +141,7 @@
         </div>
     </nav>
 
-    <main class="max-w-6xl mx-auto px-4 pt-8 pb-24 sm:pb-10">
+    <main class="flex-grow max-w-6xl mx-auto px-4 pt-8 w-full">
       
       <section id="content-container" class="glass-card bg-white/60 rounded-3xl p-6 md:p-8 shadow-xl min-h-[400px] border border-white">
         
@@ -392,12 +392,24 @@
       </section>
     </main>
 
-    <footer class="bg-sage-900 text-white py-8 text-center text-sm mt-10">
-        <div class="max-w-6xl mx-auto px-4">
-            <p class="font-semibold text-sage-200">NOVA HOLISTIC HUB</p>
-            <p class="text-xs text-sage-400 mt-1">© 2025 Team Smartone Ex Machina. All rights reserved.</p>
-        </div>
-    </footer>
+    <footer class="bg-sage-900 text-white pt-8 pb-24 md:pb-8 text-center text-sm mt-10 transition-all duration-300">
+          <div class="max-w-6xl mx-auto px-4">
+              <div class="mb-4 flex items-center justify-center gap-2 opacity-80">
+                  <i class="fa-solid fa-leaf text-sage-300"></i>
+                  <span class="font-bold tracking-wider text-sage-200">NOVA HOLISTIC</span>
+              </div>
+              
+              <p class="text-xs text-sage-400">
+                  &copy; 2025 Team Smartone Ex Machina. <br class="sm:hidden" /> All rights reserved.
+              </p>
+              
+              <div class="mt-4 flex justify-center gap-4 text-[10px] text-sage-500 uppercase tracking-widest">
+                  <a href="#" class="hover:text-sage-300 transition">Privacy</a>
+                  <span>•</span>
+                  <a href="#" class="hover:text-sage-300 transition">Terms</a>
+              </div>
+          </div>
+      </footer>
 
     <script src="script.js"></script>
   </body>
