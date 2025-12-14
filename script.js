@@ -272,87 +272,107 @@ function analyzeSymptoms() {
     const physical = physicalEl.value;
     const mental = mentalEl.value;
 
-    // Validasi Input Kosong
+    // Validasi
     if (!physical || !mental) {
         resultBox.classList.remove("hidden");
         resultBox.innerHTML = `
             <div class="p-3 rounded-xl border border-red-200 bg-red-50 text-xs text-red-800 flex items-center gap-2 animate-pulse">
                 <i class="fa-solid fa-circle-exclamation"></i>
-                <span>Mohon lengkapi data fisik dan mental untuk memulai analisis.</span>
+                <span>Mohon lengkapi data fisik dan mental.</span>
             </div>`;
         return;
     }
 
-    // LOGIKA ANALISIS (DIAGNOSA -> REKOMENDASI)
-    let diagnosisTitle = "";
-    let diagnosisDesc = "";
-    let recommendationPackage = "";
-    let doctorType = "";
+    // --- LOGIKA CERDAS ---
+    let diagnosis = "Gangguan Psikosomatis Umum";
+    let desc = "Terdeteksi ketidakseimbangan antara respons tubuh terhadap beban pikiran.";
+    let riskText = "Rendah";
+    let riskClass = "bg-sage-100 text-sage-600 border-sage-200"; // Default Hijau
+    let recommendation = "Konsultasi Screening Umum";
+    let doctorType = "Dokter Umum";
 
-    // Logika Sederhana 
-    if (physical === "maag" && mental === "stres") {
-        diagnosisTitle = "Psychosomatic Gastritis (Lambung Stres)";
-        diagnosisDesc = "Kadar kortisol tinggi akibat stres kerja memicu produksi asam lambung berlebih. Pengobatan lambung saja tidak akan efektif tanpa manajemen stres.";
-        recommendationPackage = "Paket Gastric-Calm";
-        doctorType = "Internis + Mindfulness Coach";
-    } else if (physical === "gigi" && mental === "cemas") {
-        diagnosisTitle = "Bruxism (Gigi Menggeretak)";
-        diagnosisDesc = "Kecemasan bawah sadar memicu ketegangan otot rahang saat tidur. Berisiko merusak enamel gigi dan menyebabkan migrain.";
-        recommendationPackage = "Paket Dental-Relief";
-        doctorType = "Dokter Gigi (TMJ) + Terapi Napas";
-    } else if (physical === "headache" && mental === "burnout") {
-        diagnosisTitle = "Tension Type Headache";
-        diagnosisDesc = "Burnout menyebabkan otot leher dan bahu menegang kronis, menghambat aliran darah ke kepala.";
-        recommendationPackage = "Physio-Release Program";
-        doctorType = "Fisioterapis + Psikolog";
-    } else if (physical === "jantung" && mental === "cemas") {
-        diagnosisTitle = "Cardiac Anxiety (Jantung Berdebar)";
-        diagnosisDesc = "Sistem saraf simpatik terlalu aktif karena cemas, memacu detak jantung meski tidak ada kelainan jantung organik.";
-        recommendationPackage = "Heart-Mind Coherence";
-        doctorType = "Kardiolog + Hipnoterapi";
-    } else {
-        // Fallback untuk kombinasi lain
-        diagnosisTitle = "Gejala Psikosomatis Campuran";
-        diagnosisDesc = "Terdeteksi ketidakseimbangan antara respons tubuh terhadap beban pikiran. Membutuhkan screening mendalam.";
-        recommendationPackage = "Konsultasi Screening Umum";
-        doctorType = "Dokter Umum Holistik";
+    if (physical === "maag" && (mental === "stres" || mental === "cemas")) {
+        diagnosis = "Gastritis Psikosomatis";
+        desc = "Stres memicu saraf vagus meningkatkan asam lambung secara drastis.";
+        riskText = "Sedang";
+        riskClass = "bg-yellow-100 text-yellow-700 border-yellow-200"; // Kuning
+        recommendation = "Paket Gastric-Calm";
+        doctorType = "Internis + Hypnotherapy";
+    } 
+    else if ((physical === "gigi" || physical === "headache") && mental === "stres") {
+        diagnosis = "Tension & Bruxism";
+        desc = "Otot rahang dan leher menegang akibat penekanan emosi bawah sadar.";
+        riskText = "Menengah";
+        riskClass = "bg-orange-100 text-orange-700 border-orange-200"; // Oranye
+        recommendation = "Terapi Dental-Relief";
+        doctorType = "Dokter Gigi (TMJ)";
+    }
+    else if (physical === "jantung" && (mental === "cemas" || mental === "burnout")) {
+        diagnosis = "Cardiac Anxiety";
+        desc = "Respons 'fight or flight' memacu jantung berlebih. Butuh penanganan segera.";
+        riskText = "Tinggi";
+        riskClass = "bg-red-100 text-red-700 border-red-200"; // Merah
+        recommendation = "Pemeriksaan Jantung & Pikiran";
+        doctorType = "Kardiolog + Psikiater";
     }
 
-    // RENDER HASIL
     resultBox.classList.remove("hidden");
     resultBox.innerHTML = `
         <div class="mt-4 border border-sage-200 rounded-2xl overflow-hidden shadow-sm bg-white animate-fade-in-up">
             <div class="bg-sage-50 p-3 border-b border-sage-100 flex justify-between items-center">
                 <p class="text-[10px] font-bold text-sage-600 uppercase tracking-widest">
-                    <i class="fa-solid fa-clipboard-check mr-1"></i> Hasil Analisis AI
+                    <i class="fa-solid fa-microchip mr-1"></i> Analisis AI
                 </p>
-                <span class="text-[10px] bg-white border border-sage-200 px-2 py-0.5 rounded text-sage-500">Akurasi Awal: 85%</span>
+                <span class="text-[10px] px-2 py-0.5 rounded border font-bold ${riskClass}">
+                    Urgensi: ${riskText}
+                </span>
             </div>
 
-            <div class="p-4 space-y-4">
+            <div class="p-4 space-y-3">
                 <div>
-                    <p class="text-xs text-gray-400 mb-1">Indikasi Klinis:</p>
-                    <h4 class="text-sm font-bold text-sage-900 leading-tight">${diagnosisTitle}</h4>
+                    <p class="text-xs text-gray-400 mb-1">Indikasi Diagnosis:</p>
+                    <h4 class="text-sm font-bold text-sage-900 leading-tight">${diagnosis}</h4>
                     <p class="text-xs text-gray-600 mt-1 leading-relaxed border-l-2 border-sage-300 pl-2">
-                        "${diagnosisDesc}"
+                        "${desc}"
                     </p>
                 </div>
 
                 <div class="h-px bg-sage-100 w-full"></div>
 
-                <div class="flex justify-between items-end">
+                <div class="flex justify-between items-end gap-2">
                     <div>
-                        <p class="text-xs text-gray-400 mb-1">Rekomendasi Tindakan:</p>
-                        <p class="text-sm font-semibold text-nexus-teal">${recommendationPackage}</p>
-                        <p class="text-[10px] text-gray-500">Handling by: ${doctorType}</p>
+                        <p class="text-xs text-gray-400 mb-1">Saran Tindakan:</p>
+                        <p class="text-sm font-semibold text-nexus-teal">${recommendation}</p>
+                        <p class="text-[10px] text-gray-500">${doctorType}</p>
                     </div>
-                    <button type="button" id="priorityQueueBtn" onclick="document.getElementById('takeQueueBtn').click()" class="bg-sage-600 hover:bg-sage-700 text-white text-[10px] px-3 py-2 rounded-lg transition shadow-lg shadow-sage-200">
+                    <button type="button" id="autoQueueBtn" class="bg-sage-600 hover:bg-sage-700 text-white text-[10px] px-3 py-2 rounded-lg transition shadow-lg shadow-sage-200 shrink-0">
                         Ambil Antrean
                     </button>
                 </div>
             </div>
         </div>
     `;
+
+    // Kita bind event ke tombol baru yang baru saja di-render
+    setTimeout(() => {
+        const autoBtn = document.getElementById("autoQueueBtn");
+        const queueBtn = document.getElementById("takeQueueBtn");
+        
+        if (autoBtn && queueBtn) {
+            autoBtn.addEventListener("click", () => {
+                // 1. Scroll ke area antrean agar user lihat
+                queueBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                
+                // 2. Tunggu scroll selesai dikit, baru klik tombol aslinya
+                setTimeout(() => {
+                    queueBtn.click();
+                    // Opsional: Kasih highlight visual
+                    queueBtn.classList.add('ring-2', 'ring-sage-500');
+                    setTimeout(() => queueBtn.classList.remove('ring-2', 'ring-sage-500'), 1000);
+                }, 600);
+            });
+        }
+    }, 100);
 }
 
 // =============================
