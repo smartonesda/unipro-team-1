@@ -81,18 +81,30 @@ const renderServices = () => {
     const tbody = document.getElementById("servicesTableBody");
     const select = document.getElementById("serviceSelect");
     if (!tbody || !select) return;
+    
     tbody.innerHTML = "";
     select.innerHTML = "";
+    
     services.forEach((s) => {
         const tr = document.createElement("tr");
-        tr.className = "hover:bg-sage-50 transition-colors";
+        tr.className = "hover:bg-sage-50 transition-colors border-b border-sage-50 last:border-0";
+        
         tr.innerHTML = `
-            <td class="px-4 py-3">
-                <p class="font-medium text-sage-900">${s.name}</p>
-                <p class="text-[10px] text-gray-400 sm:hidden">${s.category}</p>
+            <td class="px-3 py-3 align-middle">
+                <p class="font-medium text-sage-900 text-xs sm:text-sm whitespace-normal leading-tight">
+                    ${s.name}
+                </p>
+                <p class="text-[10px] text-gray-400 mt-0.5 sm:hidden">${s.category}</p>
             </td>
-            <td class="px-4 py-3 text-right font-bold text-sage-600">${formatRupiah(s.price)}</td>`;
+            <td class="px-3 py-3 text-right align-middle">
+                <span class="font-bold text-sage-600 text-xs sm:text-sm whitespace-nowrap">
+                    ${formatRupiah(s.price)}
+                </span>
+            </td>`;
+            
         tbody.appendChild(tr);
+
+        // Bagian Dropdown
         const opt = document.createElement("option");
         opt.value = s.id;
         opt.textContent = `${s.name} (${formatRupiah(s.price)})`;
