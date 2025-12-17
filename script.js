@@ -232,6 +232,10 @@ const setupCostEstimator = () => {
 let isBreathing = false;
 let breatheInterval;
 
+
+const breatheAudio = new Audio('nafas-manual.mp3'); // Pastikan file audio ada di lokasi yang benar
+breatheAudio.volume = 0.3; // Atur volume sesuai kebutuhan
+
 function startBreathing() {
     const circle = document.getElementById('breathe-circle');
     const text = document.getElementById('breathe-text');
@@ -246,6 +250,10 @@ function startBreathing() {
         circle.style.opacity = "0.2";
         text.classList.remove("text-white"); 
         text.classList.add("text-sage-800");
+
+        breatheAudio.pause();
+        breatheAudio.currentTime = 0;
+
         return;
     }
 
@@ -255,9 +263,16 @@ function startBreathing() {
     sub.innerText = "Lewat Hidung";
     circle.style.transform = "scale(1.5)";
     circle.style.opacity = "0.6"; 
+
+    breatheAudio.play();
     
     let phase = 'inhale'; 
     breatheInterval = setInterval(() => {
+
+        breatheAudio.pause();
+        breatheAudio.currentTime = 0;
+        breatheAudio.play();
+
         if (phase === 'inhale') {
             text.innerText = "Hembus...";
             sub.innerText = "Lewat Mulut";
