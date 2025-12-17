@@ -82,14 +82,14 @@
   animation: 210ms cubic-bezier(0, 0, 0.2, 1) 90ms both fade-in-up;
 }
 
-/* 3. Nonaktifkan animasi untuk user yang sensitif motion */
-@media (prefers-reduced-motion) {
-  ::view-transition-group(*),
-
 /* EFEK GLOW UNTUK TERAPI */
 .breathing-glow {
     box-shadow: 0 0 60px 20px rgba(132, 169, 140, 0.4); /* Cahaya hijau lembut */
 }
+
+/* 3. Nonaktifkan animasi untuk user yang sensitif motion */
+@media (prefers-reduced-motion) {
+  ::view-transition-group(*),
   ::view-transition-old(*),
   ::view-transition-new(*) {
     animation: none !important;
