@@ -64,7 +64,7 @@ const renderDoctors = () => {
         card.innerHTML = `
             <div class="flex-shrink-0">
                 <div class="h-16 w-16 rounded-xl overflow-hidden bg-sage-50">
-                    <img src="${doc.photo}" class="h-full w-full object-cover" />
+                    <img src="${doc.photo}" alt="Foto dr. ${doc.name}" class="h-full w-full object-cover" />
                 </div>
             </div>
             <div class="flex-1 min-w-0">
@@ -113,17 +113,21 @@ const renderServices = () => {
     });
 };
 
-// =============================================
-// 4. SPA SYSTEM (UPDATED: WITH VIEW TRANSITION)
-// =============================================
+// ==============
+// 4. SPA SYSTEM
+// ==============
 const setupTabSwitching = () => {
     const navLinks = document.querySelectorAll(".nav-link");
     const sections = document.querySelectorAll(".spa-section");
     const quickBtns = document.querySelectorAll(".quick-nav"); 
 
-    // A. Fungsi Update DOM
+    // A. Fungsi Update DOM (Visual Change)
     const updateDOM = (targetId) => {
-        // 1. Update Section
+        // 1. Validasi: Jika targetId tidak ada elemennya, default ke 'beranda'
+        const targetSection = document.getElementById(targetId);
+        if (!targetSection) targetId = "beranda";
+
+        // 2. Update Section Visibility
         sections.forEach(sec => {
             if (sec.id === targetId) {
                 sec.classList.remove("hidden");
@@ -132,12 +136,12 @@ const setupTabSwitching = () => {
             }
         });
 
-        // 2. Update Navigasi
+        // 3. Update Navigasi Active State
         navLinks.forEach(link => {
             const isActive = link.dataset.target === targetId;
             link.classList.toggle("tab-active", isActive);
             
-            // Logic pewarnaan teks
+            // Logic pewarnaan teks spesifik kamu
             if (isActive) {
                 link.classList.remove("text-sage-600");
                 const icon = link.querySelector("i");
@@ -150,8 +154,8 @@ const setupTabSwitching = () => {
         window.scrollTo(0, 0);
     };
 
-    // B. Fungsi Eksekusi Transisi
-    const showSection = (targetId) => {
+    // B. Wrapper untuk Transisi (View Transition API)
+    const renderPage = (targetId) => {
         if (!document.startViewTransition) {
             updateDOM(targetId);
             return;
@@ -161,27 +165,60 @@ const setupTabSwitching = () => {
         });
     };
 
-    window.showSection = showSection;
+    // C. Event Listeners untuk Klik (Push State)
+    const handleNavClick = (e, targetId) => {
+        e.preventDefault();
+        
+        // Cek apakah kita sudah di halaman itu? Kalau iya, jangan pushState lagi
+        const currentHash = window.location.hash.replace("#", "") || "beranda";
+        if (currentHash === targetId) return;
 
-    // C. Event Listeners
+        // Ubah URL dan simpan history
+        history.pushState({ page: targetId }, "", `#${targetId}`);
+        renderPage(targetId);
+    };
+
+    // Pasang Listener ke Navigasi Utama
     navLinks.forEach(link => {
         link.addEventListener("click", (e) => {
-            e.preventDefault();
-            const btn = link.closest("button"); // Handle klik pada icon/text dalam button
-            if(btn) showSection(btn.dataset.target);
+            // Cari tombol terdekat jika yang diklik ikon/span
+            const btn = link.closest("button");
+            if(btn) handleNavClick(e, btn.dataset.target);
         });
     });
 
+    // Pasang Listener ke Quick Buttons (jika ada)
     if(quickBtns) {
         quickBtns.forEach(btn => {
             btn.addEventListener("click", (e) => {
-                e.preventDefault();
-                showSection(btn.dataset.target);
+                const target = btn.dataset.target;
+                handleNavClick(e, target);
             });
         });
     }
 
-    updateDOM("beranda");
+    // D. Listener Tombol Back/Forward Browser (Pop State)
+    window.addEventListener("popstate", (event) => {
+        // Jika event.state ada, pakai itu. Jika tidak, ambil dari hash URL. Default 'beranda'
+        const targetId = event.state ? event.state.page : (window.location.hash.replace("#", "") || "beranda");
+        renderPage(targetId);
+    });
+
+    // E. Initial Load (Saat pertama kali web dibuka/refresh)
+    // Cek apakah ada hash di URL (misal: user buka link index.html#terapi)
+    const initialTarget = window.location.hash.replace("#", "") || "beranda";
+    
+    // Replace state awal agar history tidak null jika user langsung tekan back nanti
+    history.replaceState({ page: initialTarget }, "", window.location.hash || "#beranda");
+    
+    // Render halaman awal tanpa animasi transisi (biar instan)
+    updateDOM(initialTarget);
+    
+    // Ekspos fungsi ke global jika tombol antrean butuh redirect manual
+    window.showSection = (targetId) => {
+        history.pushState({ page: targetId }, "", `#${targetId}`);
+        renderPage(targetId);
+    };
 };
 
 // =============================
