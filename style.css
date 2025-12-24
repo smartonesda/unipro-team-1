@@ -106,3 +106,88 @@
 .breathing-glow {
     box-shadow: 0 0 60px 20px rgba(132, 169, 140, 0.4);
 }
+
+
+
+/* Indikator Centang di Kartu Layanan */
+.service-card.selected-service .check-indicator {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* =========================================
+   7. ANATOMY INTERACTIVE STYLES
+   ========================================= */
+.anatomy-point {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: rgba(20, 184, 166, 0.9); /* Default Color */
+    border: 2px solid white;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 4px 12px rgba(20, 184, 166, 0.4);
+    z-index: 20;
+    transform: translate(-50%, -50%); /* Center anchor point */
+}
+
+/* Efek Pulse/Ripple */
+.anatomy-point::before {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    background: inherit;
+    opacity: 0.4;
+    animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+    z-index: -1;
+}
+
+.anatomy-point:hover {
+    transform: translate(-50%, -50%) scale(1.3);
+    z-index: 30;
+}
+
+/* Tooltip Hover */
+.anatomy-point .tooltip {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background: #2F3E46;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 10px;
+    font-weight: 600;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.anatomy-point:hover .tooltip {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Animasi Garis Scanning */
+@keyframes scan {
+    0% { top: 0%; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { top: 100%; opacity: 0; }
+}
+.animate-scan {
+    animation: scan 4s linear infinite;
+}
+
+/* Animasi Panah */
+@keyframes pulse-x {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(-5px); }
+}
+.animate-pulse-x {
+    animation: pulse-x 1.5s ease-in-out infinite;
+}
